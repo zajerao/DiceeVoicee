@@ -11,8 +11,8 @@ import AVFoundation //importing the sound playing library
 class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     
-    var randomDiceIndex1 : Int = 8  //had to ensure zero was not taken from global var; using 8
-    var randomDiceIndex2 : Int = 9  //had to ensure zero was not taken from global var; using 9
+    var randomDiceIndex1 : Int = 0
+    var randomDiceIndex2 : Int = 0
     let diceArray = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
     
     var lydSpiller1 : AVAudioPlayer!  // Must have exclamation mark or build fails.
@@ -75,8 +75,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
           //  Using another array to pick positions 0-5 for a sound filename; tried let lydFilNavn : String = String(randomDiceIndex1) but it failed as random included zero "0"
         
         print("Die1 @ array pos \(randomDiceIndex1), name \(lydFilNavn1)\nDie2 @ array pos, \(randomDiceIndex2) name \(lydFilNavn2)")
-        //  Plays audio file matching die 1 number
-        
        
         let lydURL1 = Bundle.main.url(forResource: lydFilNavn1, withExtension: "wav")
         let lydURL2 = Bundle.main.url(forResource: lydFilNavn2, withExtension: "wav")
@@ -103,7 +101,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
 //                    print("the finish playing is: \(flag) so now, what?")
 //                }
 //
-//               audioPlayerDidFinishPlaying(lydSpiller1, successfully: true)
+//               audioPlayerDidFinishPlaying(lydSpiller1, successfully: true) // tried but failed to get the desired result, all i got was playing only one of the sounds
         
                     do {
                         lydSpiller2 = try AVAudioPlayer(contentsOf: lydURL2!)
